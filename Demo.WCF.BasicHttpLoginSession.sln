@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.WCF.BasicHttpLoginSess
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.WCF.BasicHttpLoginSession.Tests", "Demo.WCF.BasicHttpLoginSession.Tests\Demo.WCF.BasicHttpLoginSession.Tests.csproj", "{95701018-A6F0-4698-9398-734228C84E0A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.WCF.BasicHttpLoginSession.ServicesTester", "Demo.WCF.BasicHttpLoginSession.ServicesTester\Demo.WCF.BasicHttpLoginSession.ServicesTester.csproj", "{20D312E1-25FD-45A7-97B1-A3C52C2E2522}"
+	ProjectSection(ProjectDependencies) = postProject
+		{51797554-364A-40C6-9E43-A6D59360D95F} = {51797554-364A-40C6-9E43-A6D59360D95F}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +32,10 @@ Global
 		{95701018-A6F0-4698-9398-734228C84E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95701018-A6F0-4698-9398-734228C84E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95701018-A6F0-4698-9398-734228C84E0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20D312E1-25FD-45A7-97B1-A3C52C2E2522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20D312E1-25FD-45A7-97B1-A3C52C2E2522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20D312E1-25FD-45A7-97B1-A3C52C2E2522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20D312E1-25FD-45A7-97B1-A3C52C2E2522}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44347</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -43,7 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Wcf, Version=4.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Wcf.4.1.0\lib\net45\Autofac.Integration.Wcf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,19 +76,58 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ApplicationRequestContext.cs" />
+    <Compile Include="Common\ApplicationRequestContextManager.cs" />
+    <Compile Include="Infrastructure\AuthorizationSynchronizer.cs" />
+    <Compile Include="Common\CacheItemRemovedEventArgs.cs" />
+    <Compile Include="Common\Interfaces\IApplicationRequestContextManager.cs" />
+    <Compile Include="Infrastructure\Interfaces\IAuthorizationSynchronizer.cs" />
+    <Compile Include="Common\Interfaces\ICache.cs" />
+    <Compile Include="Common\Interfaces\ICacheWithEvents.cs" />
+    <Compile Include="Common\Interfaces\ILogger.cs" />
+    <Compile Include="Common\MemoryCache.cs" />
+    <Compile Include="Common\NoLogger.cs" />
+    <Compile Include="Common\UserContext.cs" />
+    <Compile Include="DependencyManager.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="IService.cs" />
+    <Compile Include="Infrastructure\AuthorizationBehavior.cs" />
+    <Compile Include="Infrastructure\AuthorizationBehaviorExtensionElement.cs" />
+    <Compile Include="Infrastructure\AuthorizationMessageInspector.cs" />
+    <Compile Include="Infrastructure\CacheTokenRetriever.cs" />
+    <Compile Include="Infrastructure\Constants.cs" />
+    <Compile Include="Infrastructure\CorrelationState.cs" />
+    <Compile Include="Infrastructure\Interfaces\ICacheTokenRetriever.cs" />
+    <Compile Include="Infrastructure\Interfaces\IRequestAuthorizer.cs" />
+    <Compile Include="Infrastructure\RequestAuthorizer.cs" />
+    <Compile Include="LoginSessionExpiredException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.WCF.BasicHttpLoginSession.Lib\Demo.WCF.BasicHttpLoginSession.Lib.csproj">
+      <Project>{3a8cf2b0-d42c-4ab3-b264-1d07314eab25}</Project>
+      <Name>Demo.WCF.BasicHttpLoginSession.Lib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
